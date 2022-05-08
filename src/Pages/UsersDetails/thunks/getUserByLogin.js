@@ -2,7 +2,7 @@ import {
   GET_USER_BY_LOGIN_REQUEST,
   GET_USER_BY_LOGIN_SUCCESS,
   GET_USER_BY_LOGIN_FAIL,
-} from "../actions";
+} from "../actions/index";
 import { UserServiceApi } from "../../../service/index";
 export const getUserByLoginRequest = (login) => {
   return async (dispatch) => {

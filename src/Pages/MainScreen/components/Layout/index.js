@@ -12,6 +12,7 @@ import PropTypes from "prop-types";
 import getUsers from "../../api/api";
 
 const MainScreenView = ({
+  handleGoToDetails,
   handleChange,
   handleSubmit,
   value,
@@ -25,7 +26,7 @@ const MainScreenView = ({
           sx={{ color: red[500] }}
           sx={{ fontSize: 40 }}
         />
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={() => handleGoToDetails(value)}>
           <input
             name="userName"
             className={styles.userInput}
@@ -37,8 +38,12 @@ const MainScreenView = ({
         </form>
       </div>
       <ul>
-        {users.map(({ login }) => {
-          return `${login}, `;
+        {users.map(({ login, url }) => {
+          return (
+            <div key={url} onClick={() => handleGoToDetails(login)}>
+              {login}
+            </div>
+          );
         })}
       </ul>
     </>

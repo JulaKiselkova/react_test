@@ -9,6 +9,10 @@ export class UserServiceApi {
   static getByLogin(login) {
     return api.get(`users/${login}`);
   }
+
+  static getInfoByLogin(login, info) {
+    return api.get(`users/${login}/${info}`);
+  }
 }
 
 export default UserServiceApi.instance;

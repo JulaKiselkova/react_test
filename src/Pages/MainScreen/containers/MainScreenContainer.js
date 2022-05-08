@@ -1,12 +1,20 @@
 import { useState, useCallback, memo, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import MainScreenView from "../components/Layout/index";
+import { useNavigate } from "react-router-dom";
 //import { getUsers } from "../api/api";
+import {
+  ROUTE_NAMES,
+  DATA_FETCHING,
+  USER_DETAILS,
+} from "../../../Routes/routeNames";
 import getUserRequest from "../thunks/getUserRequest";
 
 const UsersController = () => {
-  const baseUrl = "https://pokeapi.co/api/v2/";
+  //const baseUrl = "https://pokeapi.co/api/v2/";
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [value, setValue] = useState("");
   //const {theUser} = useSelector((state) => state.userPage.wycats)
   const { users } = useSelector((state) => state.usersPage);
@@ -26,6 +34,11 @@ const UsersController = () => {
   const handleSubmit = useCallback(() => {
     alert(value);
   }, [value]);
+
+  const handleGoToDetails = useCallback((login) => {
+    //navigate(`${ROUTE_NAMES.HOME_PAGE}/${login}`);
+    navigate(`/${login}`);
+  });
 
   const test = useEffect(() => {
     dispatch(getUserRequest());
@@ -57,6 +70,7 @@ const UsersController = () => {
         onEnter={onEnter}
         test={test}
         users={users}
+        handleGoToDetails={handleGoToDetails}
         //test2={test2}
         //onIncrement={handleIncrement}
         //onDecrement={handleDecrement}
