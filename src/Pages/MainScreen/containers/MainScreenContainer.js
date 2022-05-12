@@ -18,16 +18,18 @@ const UsersController = () => {
   const [value, setValue] = useState("");
   //const {theUser} = useSelector((state) => state.userPage.wycats)
   const { users } = useSelector((state) => state.usersPage);
+  //const { d } = useSelector((state) => state.usersPage);
+  //console.log(d);
 
   const handleChange = useCallback((event) => {
-    console.log(event.target.value);
+    //console.log(event.target.value);
     //console.log(getUsers());
     setValue(event.target.value);
   }, []);
 
   const onEnter = useCallback((event) => {
     //console.log("Enterrrrrr");
-    console.log(event.target.value);
+    //console.log(event.target.value);
     setValue(event.target.value);
   }, []);
 

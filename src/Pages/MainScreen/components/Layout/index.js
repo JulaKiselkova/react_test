@@ -8,6 +8,7 @@ import InputAdornment from "@mui/material/InputAdornment";
 import SearchIcon from "@mui/icons-material/Search";
 import styles from "./styles.module.css";
 import PropTypes from "prop-types";
+import CircularProgress from "@mui/material/CircularProgress";
 
 import getUsers from "../../api/api";
 

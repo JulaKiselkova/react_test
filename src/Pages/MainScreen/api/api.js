@@ -8,6 +8,6 @@ export const getUsers = (data) => {
   return api.get("users");
 };
 
-export const getCertainUserFollowers = (data) => {
-    return api.get(`users/${data}/followers`)
-}
+export const getCertainUserInfo = (login, info) => {
+  return api.get(`users/${login}/${info}`);
+};

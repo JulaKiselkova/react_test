@@ -18,9 +18,12 @@ const UsersDetailsView = ({
   certainUser,
   isFound,
   isLoading,
+  repositoriesObj,
+  handleGoToRepository,
+  repos,
 }) => {
   if (isFound()) {
-    console.log(certainUser());
+    console.log(repos);
     return (
       <div>
         {isLoading ? (
@@ -29,9 +32,8 @@ const UsersDetailsView = ({
           <>
             Details<div>{params.name}</div>
             <img src={certainUser().avatar_url}></img>
-            {/* <>Details of {info.login}</> */}
-            {/* {isFound()} */}
-            {/* <div>{errors && <div style={{ color: "red" }}>{errors}</div>}</div> */}
+            {/* <>{repos[0].id}</> */}
+            {/* <ul>{repos[0][0].name}</ul> */}
           </>
         )}
       </div>
@@ -42,7 +44,7 @@ const UsersDetailsView = ({
 };
 
 UsersDetailsView.propTypes = {
-  //value: PropTypes.string.isRequired,
+  //    repos: PropTypes.string.isRequired,
   //   onIncrement: PropTypes.func.isRequired,
   //   onDecrement: PropTypes.func.isRequired,
   //   onReset: PropTypes.func.isRequired,

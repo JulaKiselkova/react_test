@@ -4,7 +4,7 @@ import {
   GET_USER_INFO_BY_LOGIN_FAIL,
 } from "../actions/indexInfo";
 import { UserServiceApi } from "../../../service/index";
-export const getUserByLoginRequest = (login) => {
+export const getUserInfoByLoginRequest = (login, info) => {
   return async (dispatch) => {
     try {
       dispatch(GET_USER_INFO_BY_LOGIN_REQUEST);
