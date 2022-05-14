@@ -7,8 +7,10 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import SearchIcon from "@mui/icons-material/Search";
+import { browserHistory } from "react-router";
 //import styles from "./styles.module.css";
 import PropTypes from "prop-types";
+import UsersController from "../../../MainScreen/containers/MainScreenContainer";
 
 //import getUsers from "../../api/api";
 
@@ -21,26 +23,44 @@ const UsersDetailsView = ({
   repositoriesObj,
   handleGoToRepository,
   repos,
+  isEmpty,
+  html_url,
+  numberOfRepos,
+  numberOfFollowers,
 }) => {
-  if (isFound()) {
-    console.log(repos);
-    return (
-      <div>
-        {isLoading ? (
-          <CircularProgress />
-        ) : (
+  //console.log(repos);
+  return (
+    <div>
+      {isLoading ? (
+        <CircularProgress />
+      ) : (
+        <>
+          <UsersController></UsersController>
+          {`num of repos`}
+          {numberOfRepos}
+          <>num of followers</>
+          {numberOfFollowers}
+          Details<a href={html_url}>{params.name}</a>
+          <img src={certainUser().avatar_url}></img>
           <>
-            Details<div>{params.name}</div>
-            <img src={certainUser().avatar_url}></img>
-            {/* <>{repos[0].id}</> */}
-            {/* <ul>{repos[0][0].name}</ul> */}
+            {repos.map(({ name, url, id, clone_url }) => {
+              return (
+                <ul key={url}>
+                  <a
+                    //   key={url}
+                    href={clone_url}
+                    //onClick={() => handleGoToRepository(clone_url)}
+                  >
+                    {name}
+                  </a>
+                </ul>
+              );
+            })}
           </>
-        )}
-      </div>
-    );
-  } else {
-    return <>{params.name} not found</>;
-  }
+        </>
+      )}
+    </div>
+  );
 };
 
 UsersDetailsView.propTypes = {

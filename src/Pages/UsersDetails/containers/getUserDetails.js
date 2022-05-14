@@ -5,41 +5,71 @@ import { getUserByLoginRequest } from "../thunks/getUserByLogin";
 import UsersDetailsView from "../components/Layout/index";
 import { getCertainUserInfo } from "../../MainScreen/api/api";
 import { getUserInfoByLoginRequest } from "../thunks/getUserInfoByLogin";
+import { getUserFollowersByLoginRequest } from "../thunks/getUserInfoByLogin";
 import { HandleGetInfo } from "../../../functions/getInfo";
 import UserServiceApi from "../../../service/index";
 import CircularProgress from "@mui/material/CircularProgress";
 import userDetailsReducer from "../reducers";
 import axios from "axios";
+import { browserHistory } from "react-router";
+
+import React from "react";
 import { data } from "../../../functions/getInfo";
 
 const UserDetailsContainer = () => {
+  const { repos, followers, isLoading, errors } = useSelector(
+    (state) => state.userInfoDetailsPage
+  );
   const { users } = useSelector((state) => state.usersPage);
   const params = useParams();
   const navigate = useNavigate();
-  const { info } = useSelector((state) => state.userDetailsPage);
-
-  const rep = [];
-
-  const { repos, isLoading, errors } = useSelector(
-    (state) => state.userInfoDetailsPage
-  );
+  //const { info } = useSelector((state) => state.userDetailsPage);
 
   const dispatch = useDispatch();
+  //console.log(repos[0]);
+  const isEmpty = () => {
+    if (repos === []) {
+      return true;
+    } else {
+      return false;
+    }
+  };
 
+  const certainUser = () => {
+    return users.find((user) => user.login === params.name);
+  };
   useEffect(() => {
     dispatch(getUserByLoginRequest(params.name));
+    dispatch(getUserInfoByLoginRequest(certainUser().login, "repos"));
+    dispatch(getUserFollowersByLoginRequest(certainUser().login));
   }, [params.name]);
 
   const handleGoToRepository = useCallback((link) => {
-    navigate(link);
+    //return <Link to={link} />;
+    //browserHistory.replace(link);
+    //navigate(link);
   });
   //     dispatch(getUserInfoByLoginRequest(params.name, "repos"));
   //   }, [params.name]); //&&& чё ты ваще делаешь?
   //console.log(certainUser().followers_url);
 
-  const certainUser = () => {
-    return users.find((user) => user.login === params.name);
+  console.log("paramsName");
+  console.log(repos);
+
+  //console.log(certainUser());
+
+  //const html_url = "";
+  const html_url = certainUser().html_url;
+  const numberOfRepos = repos.length;
+
+  const usersLogin = () => {
+    return users.map((user) => {
+      return user.login;
+    });
   };
+  console.log("userss");
+  console.log(usersLogin());
+
   const isFound = () => {
     if (certainUser() === undefined) {
       return false;
@@ -47,9 +77,16 @@ const UserDetailsContainer = () => {
       return true;
     }
   };
+  //console.log("isFound");
+  //console.log(isFound());
+  console.log(followers);
+  const numberOfFollowers = followers.length;
 
   useEffect(() => {
+    //if (isFound()) {
     dispatch(getUserInfoByLoginRequest(certainUser().login, "repos"));
+    dispatch(getUserFollowersByLoginRequest(certainUser().login));
+    //}
   }, []);
 
   return (
@@ -63,6 +100,10 @@ const UserDetailsContainer = () => {
         //repositoriesObj={repositoriesObj}
         handleGoToRepository={handleGoToRepository}
         repos={repos}
+        isEmpty={isEmpty}
+        html_url={html_url}
+        numberOfRepos={numberOfRepos}
+        numberOfFollowers={numberOfFollowers}
       />
     </div>
   );

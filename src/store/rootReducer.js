@@ -3,6 +3,7 @@ import usersManagerReducer from "../Pages/MainScreen/reducers/index";
 import usersFetchingManagerReducer from "../Pages/DataFetching/reducers";
 import userDetailsReducer from "../Pages/UsersDetails/reducers";
 import userDetailsInfoReducer from "../Pages/UsersDetails/reducers/indexInfo";
+import {userFollowersReduce} from "../Pages/UsersDetails/reducers/indexInfo"
 //import { composeWithDevTools } from "redux-dev-tools";
 
 //import toDoManagerReducer from "../pages/ReduxToDoManager/reducers/index";
@@ -11,6 +12,6 @@ import userDetailsInfoReducer from "../Pages/UsersDetails/reducers/indexInfo";
 export const rootReducer = combineReducers({
   usersPage: usersManagerReducer,
   users: usersFetchingManagerReducer,
-  userDetailsPage: userDetailsReducer,
-  userInfoDetailsPage: userDetailsInfoReducer
+  //userDetailsPage: userDetailsReducer,
+  userInfoDetailsPage: userDetailsInfoReducer,
 });

@@ -2,6 +2,7 @@ import { useState, useCallback, memo, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import MainScreenView from "../components/Layout/index";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 //import { getUsers } from "../api/api";
 import {
   ROUTE_NAMES,
@@ -38,9 +39,22 @@ const UsersController = () => {
   }, [value]);
 
   const handleGoToDetails = useCallback((login) => {
-    //navigate(`${ROUTE_NAMES.HOME_PAGE}/${login}`);
     navigate(`/${login}`);
+    return <></>;
+    //<Link to={`${ROUTE_NAMES.HOME_PAGE}/${login}`}>Home</Link>;
+    //navigate(`${login}`);
+    //navigate(ROUTE_NAMES.USER_DETAILS);
   });
+
+  const usersLogin = () => {
+    return users.map((user) => {
+      return user.login;
+    });
+  };
+  console.log(usersLogin());
+
+  console.log("val");
+  console.log(value);
 
   const test = useEffect(() => {
     dispatch(getUserRequest());
@@ -83,3 +97,4 @@ const UsersController = () => {
 };
 
 export default memo(UsersController);
+//export const usersLogin = 
