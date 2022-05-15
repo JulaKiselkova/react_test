@@ -27,6 +27,7 @@ const UsersDetailsView = ({
   html_url,
   numberOfRepos,
   numberOfFollowers,
+  numberOfFollowing,
 }) => {
   //console.log(repos);
   return (
@@ -40,6 +41,8 @@ const UsersDetailsView = ({
           {numberOfRepos}
           <>num of followers</>
           {numberOfFollowers}
+          <>num of following</>
+          {numberOfFollowing}
           Details<a href={html_url}>{params.name}</a>
           <img src={certainUser().avatar_url}></img>
           <>

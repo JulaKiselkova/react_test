@@ -6,6 +6,7 @@ import UsersDetailsView from "../components/Layout/index";
 import { getCertainUserInfo } from "../../MainScreen/api/api";
 import { getUserInfoByLoginRequest } from "../thunks/getUserInfoByLogin";
 import { getUserFollowersByLoginRequest } from "../thunks/getUserInfoByLogin";
+import { getUserFollowingByLoginRequest } from "../thunks/getUserInfoByLogin";
 import { HandleGetInfo } from "../../../functions/getInfo";
 import UserServiceApi from "../../../service/index";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -17,7 +18,7 @@ import React from "react";
 import { data } from "../../../functions/getInfo";
 
 const UserDetailsContainer = () => {
-  const { repos, followers, isLoading, errors } = useSelector(
+  const { repos, followers, following, isLoading, errors } = useSelector(
     (state) => state.userInfoDetailsPage
   );
   const { users } = useSelector((state) => state.usersPage);
@@ -42,6 +43,7 @@ const UserDetailsContainer = () => {
     dispatch(getUserByLoginRequest(params.name));
     dispatch(getUserInfoByLoginRequest(certainUser().login, "repos"));
     dispatch(getUserFollowersByLoginRequest(certainUser().login));
+    dispatch(getUserFollowingByLoginRequest(certainUser().login));
   }, [params.name]);
 
   const handleGoToRepository = useCallback((link) => {
@@ -81,11 +83,13 @@ const UserDetailsContainer = () => {
   //console.log(isFound());
   console.log(followers);
   const numberOfFollowers = followers.length;
+    const numberOfFollowing = following.length;
 
   useEffect(() => {
     //if (isFound()) {
     dispatch(getUserInfoByLoginRequest(certainUser().login, "repos"));
     dispatch(getUserFollowersByLoginRequest(certainUser().login));
+    dispatch(getUserFollowingByLoginRequest(certainUser().login));
     //}
   }, []);
 
@@ -104,6 +108,7 @@ const UserDetailsContainer = () => {
         html_url={html_url}
         numberOfRepos={numberOfRepos}
         numberOfFollowers={numberOfFollowers}
+        numberOfFollowing={numberOfFollowing}
       />
     </div>
   );

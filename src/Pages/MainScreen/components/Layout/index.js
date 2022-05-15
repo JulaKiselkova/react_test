@@ -1,5 +1,6 @@
 import { memo } from "react";
 import GitHubIcon from "@mui/icons-material/GitHub";
+
 import { red } from "material-ui-colors";
 import Input from "@mui/material/Input";
 import Box from "@mui/material/Box";
@@ -11,6 +12,7 @@ import PropTypes from "prop-types";
 import CircularProgress from "@mui/material/CircularProgress";
 import { Link } from "react-router-dom";
 import { ROUTE_NAMES } from "../../../../Routes/routeNames";
+import { grey } from "@mui/material/colors";
 
 import getUsers from "../../api/api";
 
@@ -27,11 +29,13 @@ const MainScreenView = ({
     <>
       <div className={styles.header}>
         <GitHubIcon
+          //color="pink"
           className={styles.github}
-          sx={{ color: red[500] }}
-          sx={{ fontSize: 40 }}
+          //sx={{ fontSize: 40 }}
+          sx={{ color: grey[50], fontSize: 40 }}
         />
         <form onSubmit={() => handleGoToDetails(value)}>
+          {/* <SearchIcon /> */}
           <input
             name="userName"
             className={styles.userInput}

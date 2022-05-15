@@ -10,6 +10,7 @@ export const GET_USER_INFO_BY_LOGIN_FAIL = createAction(
   "GET_USER_INFO_BY_LOGIN_FAIL"
 );
 
+
 export const GET_FOLLOWERS_BY_LOGIN_REQUEST = createAction(
   "GET_FOLLOWERS_BY_LOGIN_REQUEST"
 );
@@ -19,3 +20,11 @@ export const GET_FOLLOWERS_BY_LOGIN_SUCCESS = createAction(
 export const GET_FOLLOWERS_BY_LOGIN_FAIL = createAction(
   "GET_FOLLOWERS_BY_LOGIN_FAIL"
 );
+
+export const GET_FOLLOWING_BY_LOGIN_REQUEST = createAction(
+  "GET_FOLLOWING_BY_LOGIN_REQUEST"
+);
+export const GET_FOLLOWING_BY_LOGIN_SUCCESS = createAction(
+  "GET_FOLLOWING_BY_LOGIN_SUCCESS"
+);
+export const GET_FOLLOWING_BY_LOGIN_FAIL = createAction("GET_FOLLOWING_BY_LOGIN_FAIL");

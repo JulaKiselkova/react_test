@@ -26,26 +26,6 @@ const userDetailsInfoReducer = handleActions(
       errors: payload,
     }),
 
-    // [actions.GET_FOLLOWERS_BY_LOGIN_REQUEST]: (state) => ({
-    //   ...state,
-    //   isLoading: true,
-    // }),
-    // [actions.GET_FOLLOWERS_BY_LOGIN_SUCCESS]: (state, { payload }) => ({
-    //   ...state,
-    //   isLoading: false,
-    //   followers: payload,
-    // }),
-    // [actions.GET_FOLLOWERS_BY_LOGIN_FAIL]: (state, { payload }) => ({
-    //   ...state,
-    //   isLoading: false,
-    //   errors: payload,
-    // }),
-  },
-  defaultState
-);
-
-export const userFollowersReducer = handleActions(
-  {
     [actions.GET_FOLLOWERS_BY_LOGIN_REQUEST]: (state) => ({
       ...state,
       isLoading: true,
@@ -60,8 +40,43 @@ export const userFollowersReducer = handleActions(
       isLoading: false,
       errors: payload,
     }),
+
+    [actions.GET_FOLLOWING_BY_LOGIN_REQUEST]: (state) => ({
+      ...state,
+      isLoading: true,
+    }),
+    [actions.GET_FOLLOWING_BY_LOGIN_SUCCESS]: (state, { payload }) => ({
+      ...state,
+      isLoading: false,
+      following: payload,
+    }),
+    [actions.GET_FOLLOWING_BY_LOGIN_FAIL]: (state, { payload }) => ({
+      ...state,
+      isLoading: false,
+      errors: payload,
+    }),
   },
   defaultState
 );
+
+// export const userFollowersReducer = handleActions(
+//   {
+//     [actions.GET_FOLLOWERS_BY_LOGIN_REQUEST]: (state) => ({
+//       ...state,
+//       isLoading: true,
+//     }),
+//     [actions.GET_FOLLOWERS_BY_LOGIN_SUCCESS]: (state, { payload }) => ({
+//       ...state,
+//       isLoading: false,
+//       followers: payload,
+//     }),
+//     [actions.GET_FOLLOWERS_BY_LOGIN_FAIL]: (state, { payload }) => ({
+//       ...state,
+//       isLoading: false,
+//       errors: payload,
+//     }),
+//   },
+//   defaultState
+// );
 export default userDetailsInfoReducer;
 //export default userFallowersReducer;

@@ -11,14 +11,14 @@ export const Router = () => {
     <Routes>
       <Route path={ROUTE_NAMES.HOME_PAGE} element={<MainScreenContainer />} />
       <Route path={ROUTE_NAMES.DATA_FETCHING} element={<Async />} />
-      <Route
-        path={ROUTE_NAMES.USER_DETAILS}
-        element={<UserDetailsContainer />}
-      />
       {/* <Route
         path={ROUTE_NAMES.USER_DETAILS}
-        element={<FullDetailsContainer />}
+        element={<UserDetailsContainer />}
       /> */}
+      <Route
+        path={ROUTE_NAMES.USER_DETAILS}
+        element={<FullDetailsContainer />}
+      />
       <Route path={ROUTE_NAMES.USER_DETAILS} element={<>Hello</>} />
       {/* <Route path={"localhost:3000/mojombo"} element={<>Hello1</>} /> */}
       {/* <Route path={ROUTE_NAMES.REPO} element={<div>Hello</div>}/> */}
