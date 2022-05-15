@@ -16,6 +16,17 @@ import { grey } from "@mui/material/colors";
 
 import getUsers from "../../api/api";
 
+// {
+//   users.map(({ login, url }) => {
+//     return (
+//       <div key={url} onClick={() => handleGoToDetails(login)}>
+//         {/* <Link to={`${ROUTE_NAMES.HOME_PAGE}/${login}`}>{login}</Link> */}
+//         {login}
+//       </div>
+//     );
+//   });
+// }
+
 const MainScreenView = ({
   //onClick={() => handleGoToDetails(login)}
   handleGoToDetails,
@@ -26,7 +37,7 @@ const MainScreenView = ({
   //onClick={() => handleGoToDetails(login)
 }) => {
   return (
-    <>
+    <div className={styles.container}>
       <div className={styles.header}>
         <GitHubIcon
           //color="pink"
@@ -47,19 +58,23 @@ const MainScreenView = ({
         </form>
         <button onClick={() => handleGoToDetails(value)}>find</button>
       </div>
-      <ul>
-        {users.map(({ login, url }) => {
-          return (
-            <div key={url} onClick={() => handleGoToDetails(login)}>
-              {/* <Link to={`${ROUTE_NAMES.HOME_PAGE}/${login}`}>{login}</Link> */}
-              {login}
-            </div>
-          );
-        })}
-      </ul>
-    </>
+      <ul></ul>
+    </div>
   );
 };
+
+// </div>
+//       <ul>
+//         {users.map(({ login, url }) => {
+//           return (
+//             <div key={url} onClick={() => handleGoToDetails(login)}>
+//               {/* <Link to={`${ROUTE_NAMES.HOME_PAGE}/${login}`}>{login}</Link> */}
+//               {login}
+//             </div>
+//           );
+//         })}
+//       </ul>
+//     </div>
 
 MainScreenView.propTypes = {
   value: PropTypes.string.isRequired,

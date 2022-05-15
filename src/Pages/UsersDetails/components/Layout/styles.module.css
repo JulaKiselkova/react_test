@@ -1,0 +1,24 @@
+@font-face {
+  font-size: large;
+}
+.content {
+  display: flex;
+  background-color: lightblue;
+}
+.infoContainer {
+  /* display: flex; */
+  width: 45%;
+  flex-direction: column;
+  /* display: flex; */
+  /* flex-flow: column wrap; */
+  background-color: lightcoral;
+}
+.picture {
+  /* display: flex; */
+  border-radius: 250px;
+}
+
+.repos {
+  display: flex;
+  flex-direction: column;
+}

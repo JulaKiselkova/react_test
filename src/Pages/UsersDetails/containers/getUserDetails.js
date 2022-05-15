@@ -24,10 +24,9 @@ const UserDetailsContainer = () => {
   const { users } = useSelector((state) => state.usersPage);
   const params = useParams();
   const navigate = useNavigate();
-  //const { info } = useSelector((state) => state.userDetailsPage);
-
   const dispatch = useDispatch();
-  //console.log(repos[0]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [perPage] = useState(4);
   const isEmpty = () => {
     if (repos === []) {
       return true;
@@ -62,6 +61,7 @@ const UserDetailsContainer = () => {
 
   //const html_url = "";
   const html_url = certainUser().html_url;
+  //const numberOfRepos = repos.length;
   const numberOfRepos = repos.length;
 
   const usersLogin = () => {
@@ -79,11 +79,15 @@ const UserDetailsContainer = () => {
       return true;
     }
   };
+
+  const open = (link) => {
+    window.open(link);
+  };
   //console.log("isFound");
   //console.log(isFound());
   console.log(followers);
   const numberOfFollowers = followers.length;
-    const numberOfFollowing = following.length;
+  const numberOfFollowing = following.length;
 
   useEffect(() => {
     //if (isFound()) {
@@ -109,6 +113,7 @@ const UserDetailsContainer = () => {
         numberOfRepos={numberOfRepos}
         numberOfFollowers={numberOfFollowers}
         numberOfFollowing={numberOfFollowing}
+        open={open}
       />
     </div>
   );
