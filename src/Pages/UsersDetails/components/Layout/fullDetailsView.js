@@ -11,11 +11,12 @@ import { browserHistory } from "react-router";
 import UserDetailsContainer from "../../containers/getUserDetails";
 //import styles from "./styles.module.css";
 import PropTypes from "prop-types";
+import PaginatedItems from "../../../../hooks/paginate";
 import UsersController from "../../../MainScreen/containers/MainScreenContainer";
 
 //import getUsers from "../../api/api";
 
-const FullDetailsView = ({ isFound }) => {
+const FullDetailsView = ({ isFound, isLoading }) => {
   if (isFound()) {
     return (
       <>

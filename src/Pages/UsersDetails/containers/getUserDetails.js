@@ -13,6 +13,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import userDetailsReducer from "../reducers";
 import axios from "axios";
 import { browserHistory } from "react-router";
+import Paginate from "../../../hooks/paginate";
 
 import React from "react";
 import { data } from "../../../functions/getInfo";
@@ -25,8 +26,28 @@ const UserDetailsContainer = () => {
   const params = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const [currentPage, setCurrentPage] = useState(1);
   const [perPage] = useState(4);
+  //const [lastItemIndex, setLastItemIndex] = useState(0);
+  //const [firstItemIndex, setFirstItemIndex] = useState(perPage - 1);
+  const lastItemIndex = currentPage * perPage;
+  const firstItemIndex = lastItemIndex - perPage;
+  const currentItems = repos.slice(firstItemIndex, lastItemIndex);
+  const numberOfPages = Math.ceil(repos.length / perPage);
+  console.log(numberOfPages);
+  const paginate = (event, pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+  //   const handleChangePaginate = (event, value) => {
+  //     setPage(value);
+  //   };
+  //   const [currentPage, setCurrentPage] = useState(1);
+  //   const [perPage] = useState(4);
+
+  //const lastItemIndex = currentPage * perPage;
+  //const firstItemIndex = lastItemIndex - perPage;
+  //const current = repos.splice(firstItemIndex, lastItemIndex);
   const isEmpty = () => {
     if (repos === []) {
       return true;
@@ -45,17 +66,9 @@ const UserDetailsContainer = () => {
     dispatch(getUserFollowingByLoginRequest(certainUser().login));
   }, [params.name]);
 
-  const handleGoToRepository = useCallback((link) => {
-    //return <Link to={link} />;
-    //browserHistory.replace(link);
-    //navigate(link);
-  });
-  //     dispatch(getUserInfoByLoginRequest(params.name, "repos"));
-  //   }, [params.name]); //&&& чё ты ваще делаешь?
-  //console.log(certainUser().followers_url);
-
-  console.log("paramsName");
+  //   console.log("paramsName");
   console.log(repos);
+  //   console.log(isLoading);
 
   //console.log(certainUser());
 
@@ -69,8 +82,8 @@ const UserDetailsContainer = () => {
       return user.login;
     });
   };
-  console.log("userss");
-  console.log(usersLogin());
+  //   console.log("userss");
+  //   console.log(usersLogin());
 
   const isFound = () => {
     if (certainUser() === undefined) {
@@ -106,7 +119,7 @@ const UserDetailsContainer = () => {
         isFound={isFound}
         isLoading={isLoading}
         //repositoriesObj={repositoriesObj}
-        handleGoToRepository={handleGoToRepository}
+        //handleGoToRepository={handleGoToRepository}
         repos={repos}
         isEmpty={isEmpty}
         html_url={html_url}
@@ -114,6 +127,10 @@ const UserDetailsContainer = () => {
         numberOfFollowers={numberOfFollowers}
         numberOfFollowing={numberOfFollowing}
         open={open}
+        currentItems={currentItems}
+        paginate={paginate}
+        currentPage={currentPage}
+        numberOfPages={numberOfPages}
       />
     </div>
   );

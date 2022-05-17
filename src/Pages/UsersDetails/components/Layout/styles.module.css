@@ -1,9 +1,16 @@
-@font-face {
-  font-size: large;
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@500;600&display=swap");
+/* s */
+/* font-style: normal;
+	font-weight: normal;
+    */
+
+body {
+  font-family: "Inter";
 }
 .content {
   display: flex;
   background-color: lightblue;
+  font-size: 20px;
 }
 .infoContainer {
   /* display: flex; */
@@ -21,4 +28,15 @@
 .repos {
   display: flex;
   flex-direction: column;
+}
+
+.reposHeader {
+  font-size: 32px;
+  font-weight: 500;
+}
+
+.reposItem {
+  font-size: 24px;
+  color: #0064eb;
+  cursor: pointer;
 }

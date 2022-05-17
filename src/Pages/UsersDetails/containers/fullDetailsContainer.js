@@ -18,15 +18,14 @@ import React from "react";
 import { data } from "../../../functions/getInfo";
 
 const FullDetailsContainer = () => {
+  const { isLoading } = useSelector((state) => state.userInfoDetailsPage);
   const { users } = useSelector((state) => state.usersPage);
   const params = useParams();
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getUserByLoginRequest(params.name));
   }, [params.name]);
-
 
   const certainUser = () => {
     return users.find((user) => user.login === params.name);
@@ -42,7 +41,7 @@ const FullDetailsContainer = () => {
 
   return (
     <div>
-      <FullDetailsView isFound={isFound} />
+      <FullDetailsView isFound={isFound} isLoading={isLoading} />
     </div>
   );
 };

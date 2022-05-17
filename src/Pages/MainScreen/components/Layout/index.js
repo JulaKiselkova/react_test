@@ -13,6 +13,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import { Link } from "react-router-dom";
 import { ROUTE_NAMES } from "../../../../Routes/routeNames";
 import { grey } from "@mui/material/colors";
+import ReactPaginate from "https://cdn.skypack.dev/react-paginate@7.1.3";
 
 import getUsers from "../../api/api";
 
@@ -54,11 +55,9 @@ const MainScreenView = ({
             onChange={handleChange}
             type="text"
           />
-          <div>{value}</div>
         </form>
         <button onClick={() => handleGoToDetails(value)}>find</button>
       </div>
-      <ul></ul>
     </div>
   );
 };

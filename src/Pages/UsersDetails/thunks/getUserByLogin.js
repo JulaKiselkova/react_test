@@ -9,8 +9,6 @@ export const getUserByLoginRequest = (login) => {
     try {
       dispatch(GET_USER_BY_LOGIN_REQUEST);
       const response = await UserServiceApi.getByLogin(login);
-      //const responseInfo = await UserServiceApi.getInfoByLogin
-      //dispatch(GET_USER_BY_LOGIN_SUCCESS([response.data]));
       dispatch(GET_USER_BY_LOGIN_SUCCESS(response.data));
     } catch (error) {
       dispatch(GET_USER_BY_LOGIN_FAIL(error.message));

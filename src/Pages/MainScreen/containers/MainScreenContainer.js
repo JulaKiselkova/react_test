@@ -51,10 +51,6 @@ const UsersController = () => {
       return user.login;
     });
   };
-  console.log(usersLogin());
-
-  console.log("val");
-  console.log(value);
 
   const test = useEffect(() => {
     dispatch(getUserRequest());
@@ -97,4 +93,4 @@ const UsersController = () => {
 };
 
 export default memo(UsersController);
-//export const usersLogin = 
+//export const usersLogin =

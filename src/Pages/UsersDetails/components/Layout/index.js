@@ -12,7 +12,9 @@ import { browserHistory } from "react-router";
 //import styles from "./styles.module.css";
 import styles from "./styles.module.css";
 import PropTypes from "prop-types";
+import PaginatedItems from "../../../../hooks/paginate";
 import UsersController from "../../../MainScreen/containers/MainScreenContainer";
+import PaginationControlled from "../../../../hooks/paginate";
 
 //import getUsers from "../../api/api";
 
@@ -31,44 +33,53 @@ const UsersDetailsView = ({
   numberOfRepos,
   numberOfFollowers,
   numberOfFollowing,
+  currentItems,
+  paginate,
+  currentPage,
+  numberOfPages,
 }) => {
-  //console.log(repos);
-  return (
-    <div>
-      {isLoading ? (
-        <CircularProgress />
-      ) : (
-        <>
-          <UsersController></UsersController>
-          <div className={styles.content}>
-            <div className={styles.infoContainer}>
-              <img
-                className={styles.picture}
-                src={certainUser().avatar_url}
-              ></img>
-              <>num of followers</>
-              {numberOfFollowers}
-              <>num of following</>
-              {numberOfFollowing}
-              Details<p onClick={() => open(html_url)}>{params.name}</p>
-            </div>
-            <div className={styles.repos}>
-              Repositories({numberOfRepos})
-              {repos.map(({ name, url, id, clone_url }) => {
-                return (
-                  <ul key={url}>
-                    <div onClick={() => open(clone_url)}>{name}</div>
-                    {/* <a href={clone_url}>{name}</a> */}
-                  </ul>
-                );
-              })}
-            </div>
+  if (isLoading === false) {
+    return (
+      <div>
+        <UsersController></UsersController>
+        <div className={styles.content}>
+          <div className={styles.infoContainer}>
+            <img
+              className={styles.picture}
+              src={certainUser().avatar_url}
+            ></img>
+            <>num of followers</>
+            {numberOfFollowers}
+            <>num of following</>
+            {numberOfFollowing}
+            Details<p onClick={() => open(html_url)}>{params.name}</p>
           </div>
-        </>
-      )}
-      <Pagination count={10} color="primary" />
-    </div>
-  );
+          <div className={styles.repos}>
+            <div>Repositories({numberOfRepos})</div>
+            {currentItems.map(({ name, url, id, clone_url }) => {
+              return (
+                <ul key={url} className={styles.reposItem}>
+                  <div onClick={() => open(clone_url)}>{name}</div>
+                </ul>
+              );
+            })}
+          </div>
+        </div>
+        <Pagination
+          count={numberOfPages}
+          color="primary"
+          onChange={paginate}
+        />
+      </div>
+    );
+  }
+  //   } else {
+  //     return (
+  //       <>
+  //         <CircularProgress></CircularProgress>
+  //       </>
+  //     );
+  //   }
 };
 
 UsersDetailsView.propTypes = {
