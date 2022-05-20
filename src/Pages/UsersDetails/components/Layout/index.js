@@ -56,20 +56,17 @@ const UsersDetailsView = ({
           </div>
           <div className={styles.repos}>
             <div>Repositories({numberOfRepos})</div>
-            {currentItems.map(({ name, url, id, clone_url }) => {
+            {currentItems.map(({ name, url, id, clone_url, description }) => {
               return (
                 <ul key={url} className={styles.reposItem}>
                   <div onClick={() => open(clone_url)}>{name}</div>
+                  <div>{description}</div>
                 </ul>
               );
             })}
           </div>
         </div>
-        <Pagination
-          count={numberOfPages}
-          color="primary"
-          onChange={paginate}
-        />
+        <Pagination count={numberOfPages} color="primary" onChange={paginate} />
       </div>
     );
   }
