@@ -12,7 +12,6 @@ export class UserServiceApi {
 
   static getInfoByLogin(login, info) {
     return api.get(`users/${login}/${info}?per_page=100`);
-    //return api.get(`users/${login}/${info}?per_page=100?page=${page}`);
   }
 }
 

@@ -18,7 +18,6 @@ const usersManagerReducer = handleActions(
     [actions.USERS_SUCCESS]: (state, { payload }) => ({
       ...state,
       isLoading: false,
-      //users: [...state]
       users: payload,
     }),
     [actions.USERS_FAIL]: (state, { payload }) => ({
@@ -31,14 +30,3 @@ const usersManagerReducer = handleActions(
 );
 
 export default usersManagerReducer;
-//export default usersReducer;
-
-// const toDoManagerReducer = handleActions(
-//   {
-//     [actions.CREATE_TODO]: (state) => {
-//       const newTodo = { id: uuid(), toDoValue: 0 };
-//       return { toDos: [...state.todos, newTodo] };
-//     },
-//   },
-//   initialState
-// );

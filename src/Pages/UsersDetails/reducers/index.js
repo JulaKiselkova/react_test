@@ -16,7 +16,6 @@ const userDetailsReducer = handleActions(
     [actions.GET_USER_BY_LOGIN_SUCCESS]: (state, { payload }) => ({
       ...state,
       isLoading: false,
-      //users: [...state]
       info: payload,
     }),
     [actions.GET_USER_BY_LOGIN_FAIL]: (state, { payload }) => ({

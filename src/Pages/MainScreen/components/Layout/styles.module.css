@@ -2,7 +2,7 @@
 
 body {
   font-family: "Inter";
-  /* font-size: 20px; */
+  font-size: 20px;
 }
 
 .container {
@@ -17,17 +17,14 @@ body {
   text-align: center;
   vertical-align: middle;
   background-color: #0064eb;
-  /* position: absolute; */
 }
 
 .userInput {
-  /* flex-direction: row; */
   display: inline-block;
   display: block;
   height: 40px;
   width: 500px;
   border-radius: 6px;
-  /* font-family: "Inter"; */
   font-size: 14px;
   border-color: #0064eb;
   position: relative;

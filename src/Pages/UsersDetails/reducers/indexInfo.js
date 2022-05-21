@@ -79,4 +79,3 @@ const userDetailsInfoReducer = handleActions(
 //   defaultState
 // );
 export default userDetailsInfoReducer;
-//export default userFallowersReducer;
