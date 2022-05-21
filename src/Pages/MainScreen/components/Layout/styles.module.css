@@ -1,0 +1,41 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@500;600&display=swap");
+
+body {
+  font-family: "Inter";
+  font-size: 20px;
+}
+
+.container {
+  background-color: palegreen;
+}
+
+.header {
+  display: flex;
+  max-width: 100%;
+  width: 100%;
+  height: 72px;
+  text-align: center;
+  vertical-align: middle;
+  background-color: #0064eb;
+}
+
+.userInput {
+  display: inline-block;
+  display: block;
+  height: 40px;
+  width: 500px;
+  border-radius: 6px;
+  font-size: 14px;
+  border-color: #0064eb;
+  position: relative;
+  top: 18%;
+}
+
+.github {
+  flex-direction: row;
+  display: inline-block;
+  position: relative;
+  top: 18%;
+  margin-right: 20px;
+  margin-left: 41px;
+}
