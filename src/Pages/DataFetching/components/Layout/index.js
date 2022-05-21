@@ -31,8 +31,7 @@ const MainScreenViewForm = ({ handleChange, handleSubmit, value, getData }) => {
           <div>{value}</div>
         </form>
       </div>
-      <p>ppp</p>
-      <div>{getData}</div>
+      {/* <div>{getData}</div> */}
     </>
   );
 };

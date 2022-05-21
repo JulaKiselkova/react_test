@@ -17,17 +17,6 @@ import ReactPaginate from "https://cdn.skypack.dev/react-paginate@7.1.3";
 
 import getUsers from "../../api/api";
 
-// {
-//   users.map(({ login, url }) => {
-//     return (
-//       <div key={url} onClick={() => handleGoToDetails(login)}>
-//         {/* <Link to={`${ROUTE_NAMES.HOME_PAGE}/${login}`}>{login}</Link> */}
-//         {login}
-//       </div>
-//     );
-//   });
-// }
-
 const MainScreenView = ({
   //onClick={() => handleGoToDetails(login)}
   handleGoToDetails,
@@ -56,7 +45,7 @@ const MainScreenView = ({
             type="text"
           />
         </form>
-        <button onClick={() => handleGoToDetails(value)}>find</button>
+        {/* <button onClick={() => handleGoToDetails(value)}>find</button> */}
       </div>
     </div>
   );

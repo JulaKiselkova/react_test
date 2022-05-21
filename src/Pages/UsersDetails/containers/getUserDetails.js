@@ -22,6 +22,9 @@ const UserDetailsContainer = () => {
   const { repos, followers, following, isLoading, errors } = useSelector(
     (state) => state.userInfoDetailsPage
   );
+
+  const { info } = useSelector((state) => state.userDetailsPage);
+  console.log(info);
   const { users } = useSelector((state) => state.usersPage);
   const params = useParams();
   const navigate = useNavigate();
@@ -36,6 +39,7 @@ const UserDetailsContainer = () => {
   const currentItems = repos.slice(firstItemIndex, lastItemIndex);
   const numberOfPages = Math.ceil(repos.length / perPage);
   console.log(numberOfPages);
+  console.log(users);
   const paginate = (event, pageNumber) => {
     setCurrentPage(pageNumber);
   };
@@ -101,6 +105,9 @@ const UserDetailsContainer = () => {
   console.log(followers);
   const numberOfFollowers = followers.length;
   const numberOfFollowing = following.length;
+  const name = certainUser().name;
+  console.log(certainUser());
+  console.log(users[0]);
 
   useEffect(() => {
     //if (isFound()) {
@@ -131,6 +138,7 @@ const UserDetailsContainer = () => {
         paginate={paginate}
         currentPage={currentPage}
         numberOfPages={numberOfPages}
+        name={name}
       />
     </div>
   );

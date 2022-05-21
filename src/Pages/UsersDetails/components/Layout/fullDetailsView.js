@@ -13,22 +13,26 @@ import UserDetailsContainer from "../../containers/getUserDetails";
 import PropTypes from "prop-types";
 import PaginatedItems from "../../../../hooks/paginate";
 import UsersController from "../../../MainScreen/containers/MainScreenContainer";
+import NotFoundView from "../LayoutSpesialPages/NotFound/index";
 
 //import getUsers from "../../api/api";
 
 const FullDetailsView = ({ isFound, isLoading }) => {
   if (isFound()) {
-    return (
-      <>
-        <UserDetailsContainer></UserDetailsContainer>
-        <p>yes</p>
-      </>
-    );
+    if (isLoading) {
+      return <CircularProgress />;
+    } else {
+      return (
+        <>
+          <UserDetailsContainer></UserDetailsContainer>
+        </>
+      );
+    }
   } else {
     return (
       <>
         <UsersController></UsersController>
-        <p>User not found</p>
+        <NotFoundView />
       </>
     );
   }
