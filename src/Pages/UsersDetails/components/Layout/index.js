@@ -1,8 +1,5 @@
 import { memo } from "react";
-import CircularProgress from "@mui/material/CircularProgress";
 import Pagination from "@mui/material/Pagination";
-import { browserHistory } from "react-router";
-//import styles from "./styles.module.css";
 import styles from "./styles.module.css";
 import GroupIcon from "@mui/icons-material/Group";
 import PersonIcon from "@mui/icons-material/Person";

@@ -58,24 +58,4 @@ const userDetailsInfoReducer = handleActions(
   },
   defaultState
 );
-
-// export const userFollowersReducer = handleActions(
-//   {
-//     [actions.GET_FOLLOWERS_BY_LOGIN_REQUEST]: (state) => ({
-//       ...state,
-//       isLoading: true,
-//     }),
-//     [actions.GET_FOLLOWERS_BY_LOGIN_SUCCESS]: (state, { payload }) => ({
-//       ...state,
-//       isLoading: false,
-//       followers: payload,
-//     }),
-//     [actions.GET_FOLLOWERS_BY_LOGIN_FAIL]: (state, { payload }) => ({
-//       ...state,
-//       isLoading: false,
-//       errors: payload,
-//     }),
-//   },
-//   defaultState
-// );
 export default userDetailsInfoReducer;
