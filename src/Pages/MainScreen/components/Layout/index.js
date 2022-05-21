@@ -2,7 +2,6 @@ import { memo } from "react";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import styles from "./styles.module.css";
 import PropTypes from "prop-types";
-import CircularProgress from "@mui/material/CircularProgress";
 import { grey } from "@mui/material/colors";
 
 

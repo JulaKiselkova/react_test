@@ -1,7 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import { ROUTE_NAMES, DATA_FETCHING, USER_DETAILS } from "./routeNames";
 import MainScreenContainer from "../Pages/MainScreen/containers/MainScreenContainer";
-import UserDetailsContainer from "../Pages/UsersDetails/containers/getUserDetails";
 import FullDetailsContainer from "../Pages/UsersDetails/containers/fullDetailsContainer";
 
 export const Router = () => {

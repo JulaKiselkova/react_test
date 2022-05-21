@@ -1,5 +1,4 @@
 import api from "../../../api/config";
-import axios from "axios";
 
 export const getUsers = (data) => {
   return api.get("users");
